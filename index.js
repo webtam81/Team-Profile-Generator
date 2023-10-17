@@ -13,26 +13,14 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-class Employee {
-    constructor(name,id,email) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-    }
+// Inquirer
 
-    getName() {
+//Enter team manager details
 
-    }
+// Main Menu - add engineer, add intern, or finishg building team
 
-    getId() {
+// If engineer selected, get details, then go back to main menu
 
-    }
+// If intern selected, get details, then go back to main menu
 
-    getEmail() {
-
-    }
-
-    getRole() {
-        
-    }
-}
+// on exit, call render
