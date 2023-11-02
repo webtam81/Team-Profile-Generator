@@ -15,12 +15,15 @@ const render = require("./src/page-template.js");
 
 // Inquirer
 
-//Enter team manager details
+//Enter team manager details: name, id, email, **phone**
 
 // Main Menu - add engineer, add intern, or finishg building team
 
-// If engineer selected, get details, then go back to main menu
+// If engineer selected, get details, then go back to main menu. name, id, email, **github**
 
-// If intern selected, get details, then go back to main menu
+// If intern selected, get details, then go back to main menu. name, id, email, ***school**
 
 // on exit, call render
+
+//temporary testing
+
