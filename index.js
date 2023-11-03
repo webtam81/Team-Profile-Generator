@@ -11,6 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+let teamArray = [];
+
 const employeeQuestions = [
     {
         type: 'input',
@@ -62,12 +64,65 @@ const internQuestions = [
 function createManager() {
     managerQuestionArray = [...employeeQuestions, ...managerQuestions];
     inquirer.prompt(managerQuestionArray)
-    .then((data) => {
-        console.log(data);
-        //fs.writeFile(outputPath,render(data))
+    .then((answers) => {
+        let newManager = new Manager({answers})
+        teamArray.push(newManager);
+        console.log('The team so far: ' + teamArray);   
     })
 }
+
+function createIntern() {
+    internQuestionArray = [...employeeQuestions, ...internQuestions];
+    inquirer.prompt(internQuestionArray)
+    .then((answers) => {
+        let newIntern = new Intern({answers})
+        teamArray.push(newIntern);
+        console.log('The team so far: ' + teamArray);   
+    })
+}
+
+function createEngineer() {
+    engineerQuestionArray = [...employeeQuestions, ...engineerQuestions];
+    inquirer.prompt(engineerQuestionArray)
+    .then((answers) => {
+        let newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        teamArray.push(newEngineer);
+        console.log(newEngineer)
+        console.log(teamArray); 
+    })
+}
+
+function startProgram() {
+    inquirer
+        .prompt([
+            {
+                type: 'message',
+                name: 'welcomemsg',
+                message: 'Welcome to the Team Profile Generator! Enter your manager details to get started. Press enter to continue.',
+            },
+            {
+                type: 'list',
+                name: 'mainmenu',
+                choices: ['Add Engineer','Add Intern','Finish Building Team'],
+            }
+        ])
+        .then(val => {
+            if (val.mainmenu === 'Add Engineer') {
+                createEngineer();
+            } 
+            else if (val.mainmenu === 'Add Engineer') {
+                createIntern();
+            }
+            else {
+                endProgram();
+            }
+        })
+}
  
+function endProgram() {
+    //fs.writeFile(outputPath,render(teamArray))
+    console.log(teamArray);
+}
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -90,4 +145,5 @@ function createManager() {
 //console.log(mark);
 //console.log(mark.getRole());
 
-createManager();
+startProgram();
+
