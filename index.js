@@ -46,7 +46,7 @@ const engineerQuestions = [
 const managerQuestions = [
     {
         type: 'input',
-        name: 'officenumber',
+        name: 'officeNumber',
         message: 'Please enter office number',
         default: '0121 121 0121'
     }
@@ -56,7 +56,7 @@ const internQuestions = [
     {
         type: 'input',
         name: 'school',
-        message: 'Please enter cshool',
+        message: 'Please enter school',
         default: 'school'
     }
 ]
@@ -65,20 +65,23 @@ function createManager() {
     managerQuestionArray = [...employeeQuestions, ...managerQuestions];
     inquirer.prompt(managerQuestionArray)
     .then((answers) => {
-        let newManager = new Manager({answers})
+        let newManager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber
+            )
         teamArray.push(newManager);
-        console.log('The team so far: ' + teamArray);   
+        console.log(teamArray) 
     })
+    .then(runProgram);
 }
 
 function createIntern() {
     internQuestionArray = [...employeeQuestions, ...internQuestions];
     inquirer.prompt(internQuestionArray)
     .then((answers) => {
-        let newIntern = new Intern({answers})
+        let newIntern = new Intern(answers.name, answers.id, answers.email, answers.school)
         teamArray.push(newIntern);
-        console.log('The team so far: ' + teamArray);   
+        console.log(teamArray);   
     })
+    .then(runProgram);
 }
 
 function createEngineer() {
@@ -87,19 +90,19 @@ function createEngineer() {
     .then((answers) => {
         let newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
         teamArray.push(newEngineer);
-        console.log(newEngineer)
-        console.log(teamArray); 
+        console.log(teamArray);   
     })
+    .then(runProgram);
 }
 
 function startProgram() {
+    console.log(`Welcome to the Team Profile Generator!\nPlease enter the manager's details to start:`)
+    createManager();
+}
+
+function runProgram() {
     inquirer
         .prompt([
-            {
-                type: 'message',
-                name: 'welcomemsg',
-                message: 'Welcome to the Team Profile Generator! Enter your manager details to get started. Press enter to continue.',
-            },
             {
                 type: 'list',
                 name: 'mainmenu',
@@ -110,40 +113,20 @@ function startProgram() {
             if (val.mainmenu === 'Add Engineer') {
                 createEngineer();
             } 
-            else if (val.mainmenu === 'Add Engineer') {
+            else if (val.mainmenu === 'Add Intern') {
                 createIntern();
             }
-            else {
+            else if (val.mainmenu === 'Finish Building Team'){
                 endProgram();
             }
         })
 }
- 
+
 function endProgram() {
-    //fs.writeFile(outputPath,render(teamArray))
+    team = teamArray;
+    fs.writeFile(outputPath,render(team))
     console.log(teamArray);
 }
-
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
-
-// Inquirer
-
-//Enter team manager details: name, id, email, **phone**
-
-// Main Menu - add engineer, add intern, or finishg building team
-
-// If engineer selected, get details, then go back to main menu. name, id, email, **github**
-
-// If intern selected, get details, then go back to main menu. name, id, email, ***school**
-
-// on exit, call render
-
-//temporary testing
-
-//const mark = new Manager('Bob',3,'e@mail.com',456456);
-
-//console.log(mark);
-//console.log(mark.getRole());
 
 startProgram();
 
