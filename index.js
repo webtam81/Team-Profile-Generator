@@ -68,7 +68,7 @@ function createManager() {
         let newManager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber
             )
         teamArray.push(newManager);
-        console.log(teamArray) 
+        //console.log(teamArray) 
     })
     .then(runProgram);
 }
@@ -79,7 +79,7 @@ function createIntern() {
     .then((answers) => {
         let newIntern = new Intern(answers.name, answers.id, answers.email, answers.school)
         teamArray.push(newIntern);
-        console.log(teamArray);   
+        //console.log(teamArray);   
     })
     .then(runProgram);
 }
@@ -90,7 +90,7 @@ function createEngineer() {
     .then((answers) => {
         let newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
         teamArray.push(newEngineer);
-        console.log(teamArray);   
+        //console.log(teamArray);   
     })
     .then(runProgram);
 }
@@ -125,7 +125,7 @@ function runProgram() {
 function endProgram() {
     team = teamArray;
     fs.writeFile(outputPath,render(team))
-    console.log(teamArray);
+    //console.log(teamArray);
 }
 
 startProgram();
