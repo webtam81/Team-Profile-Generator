@@ -9,13 +9,16 @@ Clone the project or download a zip using the GitHub links above.
 
 Install node.js if it is not already on your machine
 
-Run npm install 
+Run npm install to install dependencies.
 
 ## Usage
 
 Run 'node index.js' to start the generator.
 A series of prompts will ask you for details of your team. Fill in the details.
 When you have finished, your team profile file (team.html) will be generated in the /output folder.
+
+![Screenshot of the Team-Profile-Generator interface](./team-profile-generator-node-screenshot.png)
+![Screenshot of the Team-Profile-Generator generated HTML team page](./team-profile-generator-html-screenshot.png)
 
 ## License
 

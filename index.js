@@ -17,20 +17,20 @@ const employeeQuestions = [
     {
         type: 'input',
         name: 'name',
-        message: 'Please enter name',
-        default: 'Bob'
+        message: 'Please enter name'//,
+        //default: 'Bob'
     }, 
     {
         type: 'input',
         name: 'id',
-        message: 'Please enter employee ID',
-        default: 12
+        message: 'Please enter employee ID'//,
+        //default: 12
     }, 
     {
         type: 'input',
         name: 'email',
-        message: 'Please enter email address',
-        default: 'e@mail.com'
+        message: 'Please enter email address'//,
+        //default: 'e@mail.com'
     }
 ]
 
@@ -38,8 +38,8 @@ const engineerQuestions = [
     {
         type: 'input',
         name: 'github',
-        message: 'Please enter github username',
-        default: 'gitbob'
+        message: 'Please enter github username'//,
+        //default: 'gitbob'
     }
 ]
 
@@ -47,8 +47,8 @@ const managerQuestions = [
     {
         type: 'input',
         name: 'officeNumber',
-        message: 'Please enter office number',
-        default: '0121 121 0121'
+        message: 'Please enter office number'//,
+        //default: '0121 121 0121'
     }
 ]
 
@@ -56,8 +56,8 @@ const internQuestions = [
     {
         type: 'input',
         name: 'school',
-        message: 'Please enter school',
-        default: 'school'
+        message: 'Please enter school'//,
+        //default: 'school'
     }
 ]
 
